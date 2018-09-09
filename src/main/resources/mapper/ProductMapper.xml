@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.andz.cloud.db.oracle.mapper.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.andz.cloud.db.oracle.model.Product" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+      <id column="PRODUCT_NO" jdbcType="DECIMAL" property="productNo" />
+      <result column="PRODUCT_NAME" jdbcType="VARCHAR" property="productName" />
+      <result column="PRODUCT_TYPE" jdbcType="DECIMAL" property="productType" />
+      <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+      <result column="MODIFYTIME" jdbcType="TIMESTAMP" property="modifytime" />
+      <result column="REGION" jdbcType="DECIMAL" property="region" />
+      <association property="productRegion" column="REGION" javaType="com.andz.cloud.db.oracle.model.ProductRegion">
+        <result column="REGION_ID" property="regionId" jdbcType="DECIMAL" />
+        <result column="REGION_NAME" property="regionName" jdbcType="VARCHAR" />
+        <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+        <result column="MODIFYTIME" property="modifytime" jdbcType="TIMESTAMP" />
+      </association>
+  </resultMap>
+
+  <sql id="Base_Column_Product">
+  PRODUCT_NO, PRODUCT_NAME, PRODUCT_TYPE, REGION,CREATETIME, MODIFYTIME
+</sql>
+  <sql id="Base_Column_ProductRegion" >
+      REGION_ID, REGION_NAME, CREATETIME, MODIFYTIME
+  </sql>
+
+
+  <insert id="addProduct" parameterType="com.andz.cloud.db.oracle.model.Product">
+
+    INSERT INTO T_PRODUCT  (
+      <include refid="Base_Column_Product" />
+    ) VALUES(
+      #{product.productNo,jdbcType=DECIMAL},
+      #{product.productName,jdbcType=VARCHAR},
+      #{product.productType,jdbcType=DECIMAL},
+      #{product.region,jdbcType=DECIMAL},
+      #{product.createtime,jdbcType=TIMESTAMP} ,
+      #{product.modifytime,jdbcType=TIMESTAMP}
+    )
+  </insert>
+
+  <insert id="batchAddProduct" parameterType="com.andz.cloud.db.oracle.model.Product">
+    INSERT INTO T_PRODUCT  (
+    <include refid="Base_Column_Product" />
+    )
+    <foreach collection="lists" index="index" item="product" open="(" close=")" separator="union all">
+      SELECT
+      #{product.productNo,jdbcType=DECIMAL},
+      #{product.productName,jdbcType=VARCHAR},
+      #{product.productType,jdbcType=DECIMAL},
+      #{product.region,jdbcType=DECIMAL},
+      #{product.createtime,jdbcType=VARCHAR} ,
+      #{product.modifytime,jdbcType=TIMESTAMP}
+      FROM DUAL
+    </foreach>
+
+  </insert>
+<!-- 模糊查询的方式 start-->
+  <!--<select id="selectProductByLike" resultMap="BaseResultMap">
+    SELECT   <include refid="Base_Column_Product" />
+    FROM T_PRODUCT T
+    WHERE
+    T.PRODUCT_NAME LIKE '%'|| #{productName} ||'%'
+  </select>-->
+
+ <!-- <select id="selectProductByLike" resultMap="BaseResultMap">
+    SELECT   <include refid="Base_Column_Product" />
+    FROM T_PRODUCT T
+    WHERE
+    T.PRODUCT_NAME LIKE '%${productName}%'
+  </select>-->
+
+  <select id="selectProductByLike" resultMap="BaseResultMap">
+    SELECT   <include refid="Base_Column_Product" />
+    FROM T_PRODUCT T
+    WHERE
+    <![CDATA[ T.PRODUCT_NAME like concat(concat('%',#{productName}),'%')]]>
+  </select>
+  <!-- 模糊查询的方式 end-->
+
+  <select id="selectProductByTime" resultMap="BaseResultMap">
+    SELECT   <include refid="Base_Column_Product" />
+    FROM T_PRODUCT T
+    WHERE
+    <![CDATA[
+    T.CREATETIME > TO_DATE(#{createTime},'YYYY-MM-dd HH24:mi:ss')
+    AND
+    T.MODIFYTIME <  #{modifyTime}
+    ]]>
+  </select>
+
+  <select id="selectProduclLists"  resultMap="BaseResultMap">
+    SELECT *
+    FROM
+    (
+      SELECT  A.* ,ROWNUM RN
+      FROM(
+        SELECT   <include refid="Base_Column_Product" />  FROM T_PRODUCT T
+        WHERE
+        <![CDATA[ T.PRODUCT_NAME like concat(concat('%',#{productName}),'%')]]>
+      ) A
+      WHERE ROWNUM
+      <![CDATA[ <= #{limit} ]]>
+    )
+    WHERE RN > #{page}
+
+
+  </select>
+
+<!--  <select id="addProductByProcedure" statementType="CALLABLE" resultType="int">
+    call saveproduct(
+      #{product.productNo,jdbcType=DECIMAL,mode=IN},
+      #{product.productName,jdbcType=VARCHAR,mode=IN},
+      #{product.productType,jdbcType=DECIMAL,mode=IN},
+      #{product.region,jdbcType=DECIMAL,mode=IN},
+      #{product.createtime,jdbcType=VARCHAR,mode=IN} ,
+      #{product.modifytime,jdbcType=TIMESTAMP,mode=IN},
+      #{counts,jdbcType=DECIMAL,mode=OUT}
+    )
+  </select>-->
+
+  <select id="addProductByProcedure" parameterType="map" statementType="CALLABLE" resultType="Object">
+    call saveproduct(
+    #{productNo,jdbcType=DECIMAL,mode=IN},
+    #{productName,jdbcType=VARCHAR,mode=IN},
+    #{productType,jdbcType=DECIMAL,mode=IN},
+    #{region,jdbcType=DECIMAL,mode=IN},
+    #{createtime,jdbcType=VARCHAR,mode=IN} ,
+    #{modifytime,jdbcType=TIMESTAMP,mode=IN},
+    #{counts ,jdbcType=DECIMAL,mode=OUT}
+    )
+  </select>
+
+  <!--<select id="getProductAndRegion" resultMap="BaseResultMap"  parameterType="long">
+    SELECT
+      T.PRODUCT_NO, T.PRODUCT_NAME, T.PRODUCT_TYPE, T.REGION,T.CREATETIME, T.MODIFYTIME
+    FROM T_PRODUCT T
+    WHERE
+    T.REGION = #{regionID}
+  </select>
+
+  <select id="getProductRegion" resultType="ProductRegion" parameterType="long">
+    SELECT
+      P.REGION_ID, P.REGION_NAME, P.CREATETIME, P.MODIFYTIME
+    FROM T_PRODUCT_REGION P
+    WHERE
+    P.REGION_ID = #{REGION}
+  </select>-->
+  <select id="getProductAndRegion" resultMap="BaseResultMap"  parameterType="long">
+    SELECT  T.PRODUCT_NO, T.PRODUCT_NAME, T.PRODUCT_TYPE, T.REGION,T.CREATETIME, T.MODIFYTIME,
+    P.REGION_ID, P.REGION_NAME, P.CREATETIME, P.MODIFYTIME
+    FROM  T_PRODUCT T LEFT JOIN T_PRODUCT_REGION P ON T.REGION = P.REGION_ID
+    WHERE
+     T.REGION = #{regionID}
+  </select>
+
+
+
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.andz.cloud.db.oracle.mapper.ProductTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.andz.cloud.db.oracle.model.ProductType" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="PRODUCT_TYPE" property="productType" jdbcType="DECIMAL" />
+    <result column="TYPE_NAME" property="typeName" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="MODIFYTIME" property="modifytime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    PRODUCT_TYPE, TYPE_NAME, CREATETIME, MODIFYTIME
+  </sql>
+</mapper>

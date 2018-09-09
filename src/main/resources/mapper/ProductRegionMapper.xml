@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.andz.cloud.db.oracle.mapper.ProductRegionMapper" >
+  <resultMap id="BaseResultMap" type="com.andz.cloud.db.oracle.model.ProductRegion" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="REGION_ID" property="regionId" jdbcType="DECIMAL" />
+    <result column="REGION_NAME" property="regionName" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="MODIFYTIME" property="modifytime" jdbcType="TIMESTAMP" />
+    <collection property="products" ofType="com.andz.cloud.db.oracle.model.Product" column="REGION_ID">
+      <id column="PRODUCT_NO" jdbcType="DECIMAL" property="productNo" />
+      <result column="PRODUCT_NAME" jdbcType="VARCHAR" property="productName" />
+      <result column="PRODUCT_TYPE" jdbcType="DECIMAL" property="productType" />
+      <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+      <result column="MODIFYTIME" jdbcType="TIMESTAMP" property="modifytime" />
+      <result column="REGION" jdbcType="DECIMAL" property="region" />
+    </collection>
+
+  </resultMap>
+
+
+  <sql id="Base_Column_ProductRegion" >
+      REGION_ID, REGION_NAME, CREATETIME, MODIFYTIME
+  </sql>
+
+  <select id="queryProductRegion" parameterType="long" resultMap="BaseResultMap">
+        SELECT  T.PRODUCT_NO, T.PRODUCT_NAME, T.PRODUCT_TYPE, T.REGION,T.CREATETIME, T.MODIFYTIME,
+    P.REGION_ID, P.REGION_NAME, P.CREATETIME, P.MODIFYTIME
+    FROM  T_PRODUCT T  JOIN T_PRODUCT_REGION P ON T.REGION = P.REGION_ID
+    WHERE
+     P.REGION_ID = #{regionId}
+  </select>
+</mapper>
