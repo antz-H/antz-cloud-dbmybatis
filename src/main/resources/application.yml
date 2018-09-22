@@ -5,7 +5,7 @@ spring:
     druid:
       username: swhy
       password: password
-      url: jdbc:oracle:thin:@118.25.35.116:1522/helowin
+      url: jdbc:oracle:thin:@127.0.0.1:1522/helowin
       driver-class-name:  oracle.jdbc.driver.OracleDriver
 
 server:

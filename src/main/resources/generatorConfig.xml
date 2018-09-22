@@ -53,19 +53,19 @@
                enableSelectByExample="true"
                selectByExampleQueryId="true"
         ></table>-->
-        <table schema="" tableName="T_PRODUCT_REGION" domainObjectName="ProductRegion"
+        <table schema="" tableName="t_user" domainObjectName="User"
                enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true"
                selectByExampleQueryId="true"
         ></table>
-        <table schema="" tableName="T_PRODUCT_TYPE" domainObjectName="ProductType"
+        <!--<table schema="" tableName="T_PRODUCT_TYPE" domainObjectName="ProductType"
                enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true"
                selectByExampleQueryId="true"
-        ></table>
+        ></table>-->
     </context>
 </generatorConfiguration>
