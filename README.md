@@ -1,5 +1,3 @@
-<center><h2>Mybatis-TK-Mapper</h2></center>
-
 ### Mybatis-Generator使用
 
 其中GeneratoConfigure.xml配置可参考[Mybatis3](http://www.mybatis.org/generator/)
