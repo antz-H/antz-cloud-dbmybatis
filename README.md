@@ -8,11 +8,11 @@
 
 1. 修改数据库的指定配置
 
-   ![1536382333310](https://github.com/antz-H/doc/tree/master/antz-cloud-dbmybatis/1536382333310.png)
+   ![1536382333310](https://github.com/antz-H/doc/blob/master/antz-cloud-dbmybatis/1536382333310.png)
 
 2. 指定dao工程的pom文件
 
-   ![1536816514562](../../../../%E6%9E%B6%E6%9E%84%E6%96%87%E6%A1%A3/%E6%9E%B6%E6%9E%84%E9%80%89%E5%9E%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/mybatis%E6%8F%92%E4%BB%B6/Mybatis-tk-Mapper.assets/1536816514562.png)
+   ![1536816514562](https://github.com/antz-H/doc/blob/master/antz-cloud-dbmybatis/1536816514562.png)
 
    ```java
    <dependency>
@@ -29,19 +29,19 @@
 
 3. 指定myMapper文件，这里作用是为了用于后面的扩展
 
-   ![1536383227066](../../../../%E6%9E%B6%E6%9E%84%E6%96%87%E6%A1%A3/%E6%9E%B6%E6%9E%84%E9%80%89%E5%9E%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/mybatis%E6%8F%92%E4%BB%B6/Mybatis-tk-Mapper.assets/1536383227066.png)
+   ![1536383227066](https://github.com/antz-H/doc/blob/master/antz-cloud-dbmybatis/1536383227066.png)
 
 4. 指定model、mapper等路径
 
-   ![1536382953771](../../../../%E6%9E%B6%E6%9E%84%E6%96%87%E6%A1%A3/%E6%9E%B6%E6%9E%84%E9%80%89%E5%9E%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/mybatis%E6%8F%92%E4%BB%B6/Mybatis-tk-Mapper.assets/1536382953771.png)
+   ![1536382953771](https://github.com/antz-H/doc/blob/master/antz-cloud-dbmybatis/1536382953771.png)
 
 5. 指定生成的mapper内容（这5点可根据需求自行配置是否生成）
 
-   ![1536382679978](../../../../%E6%9E%B6%E6%9E%84%E6%96%87%E6%A1%A3/%E6%9E%B6%E6%9E%84%E9%80%89%E5%9E%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/mybatis%E6%8F%92%E4%BB%B6/Mybatis-tk-Mapper.assets/1536382679978.png)
+   ![1536382679978](https://github.com/antz-H/doc/blob/master/antz-cloud-dbmybatis/1536382679978.png)
 
 6. 以上全部配置完成后，运行maven插件
 
-   ![1536383001705](../../../../%E6%9E%B6%E6%9E%84%E6%96%87%E6%A1%A3/%E6%9E%B6%E6%9E%84%E9%80%89%E5%9E%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/mybatis%E6%8F%92%E4%BB%B6/Mybatis-tk-Mapper.assets/1536383001705.png)
+   ![1536383001705](https://github.com/antz-H/doc/blob/master/antz-cloud-dbmybatis/1536383001705.png)
 
    或者
 
@@ -562,7 +562,7 @@
 
 报错如下
 
-![1537593381950](Mybatis-tk-Mapper.assets/1537593381950.png)
+![1537593381950](https://github.com/antz-H/doc/blob/master/antz-cloud-dbmybatis/1537593381950.png)
 
 解决方案
 
