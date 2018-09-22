@@ -8,7 +8,7 @@
 
 1. 修改数据库的指定配置
 
-   ![1536382333310](../../../../%E6%9E%B6%E6%9E%84%E6%96%87%E6%A1%A3/%E6%9E%B6%E6%9E%84%E9%80%89%E5%9E%8B/%E6%95%B0%E6%8D%AE%E5%BA%93/mybatis%E6%8F%92%E4%BB%B6/Mybatis-tk-Mapper.assets/1536382333310.png)
+   ![1536382333310](https://github.com/antz-H/doc/tree/master/antz-cloud-dbmybatis/1536382333310.png)
 
 2. 指定dao工程的pom文件
 
