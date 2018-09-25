@@ -1,5 +1,7 @@
 package com.andz.cloud.service;
 
+import java.sql.SQLException;
+
 /**
  * @program: antz-cloud-dbmybatis
  * @description:
@@ -8,5 +10,5 @@ package com.andz.cloud.service;
  **/
 public interface ProductService {
 
-    void hello();
+    void hello() throws SQLException;
 }

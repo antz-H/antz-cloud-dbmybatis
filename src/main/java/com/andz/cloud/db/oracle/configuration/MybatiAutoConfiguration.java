@@ -2,6 +2,7 @@ package com.andz.cloud.db.oracle.configuration;
 
 import org.apache.ibatis.type.JdbcType;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import tk.mybatis.mapper.autoconfigure.ConfigurationCustomizer;
 
 /**
@@ -10,7 +11,7 @@ import tk.mybatis.mapper.autoconfigure.ConfigurationCustomizer;
  * @author: huanghuang@rewin.com.cn
  * @Create: 2018-09-22 12:37
  **/
-//@Configuration
+@Configuration
 public class MybatiAutoConfiguration {
     @Bean
     public ConfigurationCustomizer configurationCustomizer(){
