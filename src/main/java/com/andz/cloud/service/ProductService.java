@@ -10,5 +10,7 @@ import java.sql.SQLException;
  **/
 public interface ProductService {
 
-    void hello() throws SQLException;
+    void deleteProduct() throws SQLException;
+
+    void upateProduct() ;
 }

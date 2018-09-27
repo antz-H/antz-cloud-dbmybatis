@@ -1,14 +1,12 @@
 package com.andz.cloud.db.oracle.mapper;
 
-import com.andz.cloud.AntzCloudDbmybatisApplication;
+import com.AntzCloudDbmybatisApplication;
 import com.andz.cloud.db.oracle.model.Product;
-import com.andz.cloud.service.ProductService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;

@@ -1,13 +1,14 @@
 spring:
   application:
     name: mybatis
-  datasource:
-    druid:
-      username: swhy
-      password: password
-      url: jdbc:oracle:thin:@127.0.0.1:1522/helowin
-      driver-class-name:  oracle.jdbc.driver.OracleDriver
-
+#  datasource:
+#    druid:
+#      first:
+#        #jdbcUrl: jdbc:oracle:thin:@118.25.35.116:1522/helowin
+#        username: swhy
+#        password: password
+#        url: jdbc:oracle:thin:@118.25.35.116:1522/helowin
+#        driver-class-name:  oracle.jdbc.driver.OracleDriver
 server:
   port: 8001
 
@@ -18,3 +19,4 @@ mybatis:
 logging:
   level:
     com.andz.cloud.db.oracle.mapper: debug
+    root: debug

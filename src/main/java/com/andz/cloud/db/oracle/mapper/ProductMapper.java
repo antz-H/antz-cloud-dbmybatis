@@ -3,13 +3,11 @@ package com.andz.cloud.db.oracle.mapper;
 import com.andz.cloud.db.oracle.model.Product;
 import com.andz.cloud.db.oracle.utils.MyMapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-@Transactional
 public interface ProductMapper extends MyMapper<Product> {
 
     /**

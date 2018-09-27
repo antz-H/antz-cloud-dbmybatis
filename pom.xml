@@ -28,27 +28,46 @@
 		<com.oracle.version>11.2.0.3.0</com.oracle.version>
 		<org.projectlombok.version>1.16.18</org.projectlombok.version>
 		<com.github.pagehelper.version>1.2.3</com.github.pagehelper.version>
+		<org.aspectj.version>1.8.13</org.aspectj.version>
+		<com.alibaba-druid.version>1.1.9</com.alibaba-druid.version>
+		<com.alibaba.druid-spring-boot-starter.version>1.1.9</com.alibaba.druid-spring-boot-starter.version>
 	</properties>
 
 	<dependencies>
+		<!--<dependency>
+			<groupId>com.swhysc</groupId>
+			<artifactId>plugin-db</artifactId>
+			<version>1.0.0</version>
+		</dependency>-->
+	<!--	<dependency>
+			<groupId>com.swhysc</groupId>
+			<artifactId>swhysc-service-plugin</artifactId>
+			<version>0.0.0.1</version>
+		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+			<!--<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>-->
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
 			<version>${com.alibaba.druid.version}</version>
 		</dependency>
+		<!--<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${com.alibaba-druid.version}</version>
+		</dependency>-->
 		<dependency>
 			<groupId>tk.mybatis</groupId>
 			<artifactId>mapper-spring-boot-starter</artifactId>
 			<version>${tk.mybatis.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper-spring-boot</artifactId>
-			<version>${com.github.pagehelper.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.oracle</groupId>
@@ -70,6 +89,11 @@
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<version>${com.github.pagehelper.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${org.aspectj.version}</version>
 		</dependency>
 	</dependencies>
 

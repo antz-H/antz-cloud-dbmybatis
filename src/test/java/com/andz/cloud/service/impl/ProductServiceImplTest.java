@@ -19,7 +19,8 @@ public class ProductServiceImplTest {
 
     @Test
     public void hello() throws Exception {
-        productService.hello();
+        productService.deleteProduct();
+        //productService.upateProduct();
     }
 
 }

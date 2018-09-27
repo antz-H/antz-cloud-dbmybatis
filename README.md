@@ -264,7 +264,7 @@
     #使用mybatis分页插件   推荐
     package com.andz.cloud.db.oracle.mapper;
     
-    import com.andz.cloud.AntzCloudDbmybatisApplication;
+    import com.AntzCloudDbmybatisApplication;
     import com.andz.cloud.db.oracle.model.Product;
     import com.andz.cloud.service.ProductService;
     import com.github.pagehelper.PageHelper;
