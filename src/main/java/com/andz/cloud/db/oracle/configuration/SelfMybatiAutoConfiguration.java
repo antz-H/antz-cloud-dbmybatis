@@ -11,7 +11,7 @@ import tk.mybatis.mapper.autoconfigure.ConfigurationCustomizer;
  * @author: huanghuang@rewin.com.cn
  * @Create: 2018-09-22 12:37
  **/
-//@Configuration
+@Configuration
 public class SelfMybatiAutoConfiguration {
     @Bean
     public ConfigurationCustomizer configurationCustomizer(){
