@@ -3,6 +3,7 @@ package com.andz.cloud.db.oracle.dynamic;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -24,10 +25,17 @@ import java.util.Map;
 @Configuration
 public class DefaultDynamicDataSourceConfig {
 
-    @Bean
+    @Bean("defaultDataSource")
     @ConfigurationProperties("spring.datasource.druid.first")
     @ConditionalOnProperty(value = "spring.datasource.druid.first.url")
     public DataSource defaultDataSource(){
+        return DruidDataSourceBuilder.create().build();
+    }
+
+    @Bean("secondDataSource")
+    @ConfigurationProperties("spring.datasource.druid.second")
+    @ConditionalOnProperty(value = "spring.datasource.druid.second.url")
+    public DataSource secondDataSource(){
         return DruidDataSourceBuilder.create().build();
     }
 
@@ -37,7 +45,9 @@ public class DefaultDynamicDataSourceConfig {
     public DynamicDataSource dataSource() {
         Map<String, DataSource> targetDataSources = new HashMap<>(10);
         DataSource defaultDataSource = defaultDataSource() ;
+        DataSource secondDataSource =  secondDataSource();
         targetDataSources.put(DataSourceNames.FIRST, defaultDataSource);
+        targetDataSources.put(DataSourceNames.SECOND, secondDataSource);
         return new DynamicDataSource(defaultDataSource, targetDataSources);
     }
 

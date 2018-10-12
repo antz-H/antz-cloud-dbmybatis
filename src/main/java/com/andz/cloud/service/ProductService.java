@@ -13,4 +13,9 @@ public interface ProductService {
     void deleteProduct() throws SQLException;
 
     void upateProduct() ;
+
+
+    void SavaProduct();
+
+    void SaveTclTxDate() ;
 }

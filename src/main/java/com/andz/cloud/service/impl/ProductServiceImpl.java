@@ -3,8 +3,10 @@ package com.andz.cloud.service.impl;
 import com.andz.cloud.db.oracle.dynamic.DataSourceNames;
 import com.andz.cloud.db.oracle.dynamic.annotation.DataSource;
 import com.andz.cloud.db.oracle.mapper.ProductMapper;
+import com.andz.cloud.db.oracle.mapper.TclTxDateMapper;
 import com.andz.cloud.db.oracle.model.Product;
 import com.andz.cloud.db.oracle.model.ProductExample;
+import com.andz.cloud.db.oracle.model.TclTxDate;
 import com.andz.cloud.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,13 @@ import java.util.Random;
  **/
 @Service
 @Slf4j
-@Transactional(rollbackFor = Exception.class)
+//@Transactional(rollbackFor = Exception.class)
 public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductMapper productMapper ;
+
+    @Autowired
+    TclTxDateMapper tclTxDateMapper ;
 
     @Override
     public void deleteProduct() throws SQLException {
@@ -54,4 +59,26 @@ public class ProductServiceImpl implements ProductService {
         productMapper.updateByExample(product,productExample);
         //throw new NullPointerException();
     }
+
+    @Override
+    public void SavaProduct() {
+        Product p = new Product();
+        p.setProductName("柿子");
+        p.setProductNo(1000110l);
+        productMapper.insert(p);
+    }
+
+    @DataSource(name = DataSourceNames.SECOND)
+    public void SaveTclTxDate(){
+        TclTxDate tclTxDate = new TclTxDate();
+        tclTxDate.setBranchCode("0001");
+        tclTxDate.setBusiDate((short)1);
+        tclTxDate.setMarketCode("1");
+        tclTxDate.setBusinessStatus("2");
+        tclTxDate.setTxDate("12");
+        tclTxDate.setClrCtrl(1l);
+        tclTxDateMapper.insert(tclTxDate) ;
+    }
+
+
 }

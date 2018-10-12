@@ -20,12 +20,10 @@ import java.lang.reflect.Method;
  * @create 2018-06-06 16:49
  **/
 @Aspect
-//@Component
+@Component
 public class DynamicDataSourceAspect {
 
-    private  Logger logger = LoggerFactory.getLogger(getClass());
-
-
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Around("@annotation(com.andz.cloud.db.oracle.dynamic.annotation.DataSource)")
     public Object around(ProceedingJoinPoint point) throws Throwable{
@@ -36,10 +34,10 @@ public class DynamicDataSourceAspect {
 
         if( dataSource == null ){
             DynamicDataSource.setDataSource(DataSourceNames.FIRST);
-            logger.info("set datasource is " + DataSourceNames.FIRST);
+            logger.info("set datasource {} " , DataSourceNames.FIRST);
         }else{
             DynamicDataSource.setDataSource(dataSource.name());
-            logger.info("set datasource is " + dataSource.name());
+            logger.info("set datasource {} " , dataSource.name());
         }
         try{
             return point.proceed() ;
