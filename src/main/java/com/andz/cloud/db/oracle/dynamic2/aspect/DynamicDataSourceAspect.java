@@ -1,13 +1,16 @@
-package com.andz.cloud.db.oracle.dynamic.aspect;
+package com.andz.cloud.db.oracle.dynamic2.aspect;
+
 
 import com.andz.cloud.db.oracle.annotation.DataSource;
-import com.andz.cloud.db.oracle.dynamic.DataSourceNames;
-import com.andz.cloud.db.oracle.dynamic.DynamicDataSource;
+import com.andz.cloud.db.oracle.dynamic2.DynamicDataSource;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import java.lang.reflect.Method;
 
 /**
@@ -16,11 +19,14 @@ import java.lang.reflect.Method;
  * @author huanghuang@rewin.com.cn
  * @create 2018-06-06 16:49
  **/
-//@Aspect
+@Aspect
+@Slf4j
 //@Component
 public class DynamicDataSourceAspect {
 
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+    //默认数据源的名称
+    @Value("${demeter.dynamic.datasource.config.default.db:first}")
+    private String defaultDb ;
 
     @Around("@annotation(com.andz.cloud.db.oracle.annotation.DataSource)")
     public Object around(ProceedingJoinPoint point) throws Throwable{
@@ -30,11 +36,11 @@ public class DynamicDataSourceAspect {
         DataSource dataSource = method.getAnnotation(DataSource.class) ;
 
         if( dataSource == null ){
-            DynamicDataSource.setDataSource(DataSourceNames.FIRST);
-            logger.info("set datasource {} " , DataSourceNames.FIRST);
+            DynamicDataSource.setDataSource(defaultDb);
+            log.info("set default datasource {} " , defaultDb);
         }else{
             DynamicDataSource.setDataSource(dataSource.name());
-            logger.info("set datasource {} " , dataSource.name());
+            log.info("set datasource {} " , dataSource.name());
         }
         try{
             return point.proceed() ;

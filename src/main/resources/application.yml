@@ -24,4 +24,24 @@ mybatis:
 logging:
   level:
     com.andz.cloud.db.oracle.mapper: debug
-    #root: debug
+   #root: debug
+
+demeter:
+  dynamic:
+    datasource:
+      config:
+        default:
+          db: swhy
+      druid:
+      - swhy:
+        name: swhy
+        username: swhy
+        password: password
+        url: jdbc:oracle:thin:@118.25.35.116:1522/helowin
+        driver-class-name: oracle.jdbc.driver.OracleDriver
+      - huangyh:
+        name: huangyh
+        username: huangyh
+        password: 123456
+        url: jdbc:oracle:thin:@118.25.35.116:1522/helowin
+        driver-class-name: oracle.jdbc.driver.OracleDriver

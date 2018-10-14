@@ -22,7 +22,7 @@ import java.util.Map;
  * @author: huanghuang@rewin.com.cn
  * @Create: 2018-09-25 16:39
  **/
-@Configuration
+//@Configuration
 public class DefaultDynamicDataSourceConfig {
 
     @Bean("defaultDataSource")

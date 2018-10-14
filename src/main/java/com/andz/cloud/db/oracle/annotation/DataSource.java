@@ -1,7 +1,9 @@
-package com.andz.cloud.db.oracle.dynamic.annotation;
+package com.andz.cloud.db.oracle.annotation;
 
 import com.andz.cloud.db.oracle.dynamic.DataSourceNames;
+
 import java.lang.annotation.*;
+
 /**
  * 多数据源注解
  * @author huanghuang@rewin.com.cn

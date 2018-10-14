@@ -1,7 +1,7 @@
 package com.andz.cloud.service.impl;
 
 import com.andz.cloud.db.oracle.dynamic.DataSourceNames;
-import com.andz.cloud.db.oracle.dynamic.annotation.DataSource;
+import com.andz.cloud.db.oracle.annotation.DataSource;
 import com.andz.cloud.db.oracle.mapper.ProductMapper;
 import com.andz.cloud.db.oracle.mapper.TclTxDateMapper;
 import com.andz.cloud.db.oracle.model.Product;
@@ -11,7 +11,6 @@ import com.andz.cloud.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
 import java.util.Random;
@@ -72,7 +71,7 @@ public class ProductServiceImpl implements ProductService {
     public void SaveTclTxDate(){
         TclTxDate tclTxDate = new TclTxDate();
         tclTxDate.setBranchCode("0001");
-        tclTxDate.setBusiDate((short)1);
+        tclTxDate.setBusiDate(1l);
         tclTxDate.setMarketCode("1");
         tclTxDate.setBusinessStatus("2");
         tclTxDate.setTxDate("12");
