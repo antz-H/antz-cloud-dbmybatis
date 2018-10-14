@@ -53,7 +53,7 @@
                enableSelectByExample="true"
                selectByExampleQueryId="true"
         ></table>-->
-        <table schema="" tableName="t_user" domainObjectName="User"
+        <table schema="" tableName="tcl_tx_date" domainObjectName="TclTxDate"
                enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"

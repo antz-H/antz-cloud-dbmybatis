@@ -607,5 +607,8 @@ https://gitee.com/zenith/mybatis-generator-plugin
 
 https://www.cnblogs.com/wuxiang/p/5144940.html
 
+参考这位博主的多数据源配置
+https://github.com/rhettpang/dynamic-datasource
+
 
 

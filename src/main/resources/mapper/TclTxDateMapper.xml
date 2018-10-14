@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.andz.cloud.db.oracle.mapper.TclTxDateMapper" >
+  <resultMap id="BaseResultMap" type="com.andz.cloud.db.oracle.model.TclTxDate" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="BUSI_DATE" property="busiDate" jdbcType="DECIMAL" />
+    <result column="BRANCH_CODE" property="branchCode" jdbcType="CHAR" />
+    <result column="MARKET_CODE" property="marketCode" jdbcType="CHAR" />
+    <result column="TX_DATE" property="txDate" jdbcType="CHAR" />
+    <result column="CLR_CTRL" property="clrCtrl" jdbcType="DECIMAL" />
+    <result column="BUSINESS_STATUS" property="businessStatus" jdbcType="CHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    BUSI_DATE, BRANCH_CODE, MARKET_CODE, TX_DATE, CLR_CTRL, BUSINESS_STATUS
+  </sql>
+</mapper>
