@@ -22,7 +22,7 @@ import java.lang.annotation.*;
 @Documented
 //内部封装MapperScan，对Mapper的扫描
 @MapperScan
-@Import({DynamicDataSourceAspect.class, DefaultDynamicDataSourceConfig.class, DBProperties.class, MapperScannerRegistrar.class})
+@Import({DynamicDataSourceAspect.class, DefaultDynamicDataSourceConfig.class, DBProperties.class})
 public @interface EnableMultiDataSource {
 
     @AliasFor(annotation = MapperScan.class,attribute = "basePackages")
